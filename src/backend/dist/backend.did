@@ -1,0 +1,55 @@
+type Time = int;
+type Project = 
+ record {
+   content: text;
+   createdAt: Time;
+   owner: principal;
+   projectType: text;
+   title: text;
+   updatedAt: Time;
+ };
+type AiImageResult = 
+ variant {
+   err: text;
+   ok: record {
+         imageBase64: text;
+         mimeType: text;
+       };
+ };
+type AiDesignResult = 
+ variant {
+   err: text;
+   ok: record {suggestions: text;};
+ };
+type AiAudioResult = 
+ variant {
+   err: text;
+   ok: record {
+         audioBase64: text;
+         metadata: text;
+         mimeType: text;
+       };
+ };
+service : {
+  createProject: (title: text, projectType: text, content: text) -> (nat);
+  deleteProject: (id: nat) -> ();
+  /// Poll a Replicate prediction by ID to check if it has completed.
+  /// Returns the raw JSON response from Replicate (status, output, error fields).
+  getAiPredictionStatus: (predictionId: text) -> (AiDesignResult);
+  getProject: (id: nat) -> (Project) query;
+  getProjects: () -> (vec Project) query;
+  /// Process base64-encoded audio using an AI operation.
+  /// operation: "vocals_separate" | "enhance_voice" | "normalize"
+  /// Returns processed audio as base64 or a mock if no API key is set.
+  processAiAudio: (audioBase64: text, operation: text) -> (AiAudioResult);
+  /// Get AI-powered design suggestions: font matches, color palettes, text suggestions.
+  /// Returns JSON string with suggestions array.
+  processAiDesign: (prompt: text, designType: text, brandColors: text) ->
+   (AiDesignResult);
+  /// Process a base64-encoded image using an AI operation.
+  /// operation: "colorize" | "cartoon" | "portrait_blur" | "object_remove" | "age_filter"
+  /// Returns the processed image as base64 or a mock if no API key is set.
+  processAiImage: (imageBase64: text, operation: text) -> (AiImageResult);
+  setAiApiKey: (key: text) -> ();
+  updateProject: (id: nat, title: opt text, content: opt text) -> ();
+}

@@ -1,0 +1,27 @@
+{
+  "overview": "FStudioX is an all-in-one creative editing suite for Faisal Raza with Photo, Video, Text, Design, and Music editors. Built with a signature red/white/black theme, it brings CapCut and Instagram-level editing to a single web app.",
+  "features": [
+    "Music Editor with audio import, trim, and effects",
+    "Built-in copyright-free music library with 40 tracks across 5 genres",
+    "Voiceover recording with separate track from background music",
+    "Audio effects: bass boost, echo/reverb, pitch control, noise reduction",
+    "Waveform visualization and playback preview",
+    "Photo editor with CapCut-level tools including background removal and face swap",
+    "Video editor with trim, filters, overlays, speed control",
+    "Text and Design editors with export",
+    "Auto-save every 30 seconds with project restore",
+    "CapCut/Instagram-style split layout with bottom navigation"
+  ],
+  "category": "creative-tools",
+  "tags": [
+    "music-editor",
+    "audio-editing",
+    "video-editor",
+    "photo-editor",
+    "creative-suite",
+    "capcut-style",
+    "voiceover",
+    "music-library"
+  ],
+  "last_updated": "2026-04-09T18:44:49.899Z"
+}
